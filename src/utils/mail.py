@@ -1,5 +1,7 @@
 from fastapi_mail import FastMail, MessageSchema, ConnectionConfig, MessageType
 from pydantic import BaseModel, EmailStr
+from src.utils.settings import settings
+
 
 from typing import List
 
@@ -7,9 +9,9 @@ from typing import List
 #     email: List[EmailStr]
 
 conf = ConnectionConfig(
-    MAIL_USERNAME="AazamCodes",
-    MAIL_PASSWORD="mmqt haqf tluz lnxc",
-    MAIL_FROM="aazam.codes@gmail.com",
+    MAIL_USERNAME= settings.MAIL_USERNAME,
+    MAIL_PASSWORD=settings.MAIL_PASSWORD,
+    MAIL_FROM=settings.MAIL_FROM,
     MAIL_PORT=465,
     MAIL_SERVER="smtp.gmail.com",
     MAIL_FROM_NAME="Aazam Mansuri",
