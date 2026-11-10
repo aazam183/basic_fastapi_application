@@ -23,13 +23,12 @@ def get_allTasks(db:Session, user: UserModel):
     tasks = db.query(taskModel).filter(taskModel.user_id == user.id)
     return tasks
 
+
     
-
-def getTaskByID(taskID : int,db:Session):
+def getTaskByID(taskID: int, db: Session, user: UserModel):
     task = db.query(taskModel).get(taskID)
-    if not task:
-        raise HTTPException(404,detail="ID not found")
-
+    if not task or task.user_id != user.id:
+        raise HTTPException(404, detail="ID not found")  
     return task
     
 
